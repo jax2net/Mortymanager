@@ -1,4 +1,4 @@
- /* CSS File for main.html */
+/* CSS File for main.html */
 
 .header {
     display:flex;

@@ -3,17 +3,19 @@
 // The JS file where calls to handle API calls / DOM manipulation
 
 
-let url = 'https://rickandmortyapi.com/api/character/'; // url for characters
+let url = 'https://rickandmortyapi.com/api/character'; // url for characters
 let data; // holds the JSON Object
 const page = document.getElementById('data'); // reference to the div with id data
 const nextButton = document.getElementById('next');
 const prevButton = document.getElementById('prev');
 const squadButton = document.getElementById('current-squad-button');
-const searchBar = document.getElementById('bar');
-const searchButton = document.getElementById('search-button');
 let nextPageURL;
 let prevPageURL;// holds reference to button that is used to add a character 
+
  
+
+
+
 // we are getting the JSON object
 const getData = () => {
     fetch(url)
@@ -138,12 +140,4 @@ prevButton.onclick = function() {
 
 squadButton.onclick = function() {
     console.log('clicked Squad Button');
-}
-
-searchButton.onclick = function() {
-    console.log('searching for ' + searchBar.value);
-    url = 'https://rickandmortyapi.com/api/character/';
-    url += '?name=' + searchBar.value;
-    page.innerHTML = "";
-    getData(this);
 }

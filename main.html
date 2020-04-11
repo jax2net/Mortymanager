@@ -1,7 +1,39 @@
 <!DOCTYPE html>
 <!--Main page of the app, after user makes account / logs in-->
 <html>
-  <body>
+  
+  <head>
+    <title>Main - Mortymanager</title>
+    <link href="global.css" rel="stylesheet">
+    <link  href="main.css" rel="stylesheet">
+  </head>
+  
+  <body onload="getData()">
     
+    <div class="header">
+      <h1>Mortymanager</h1>
+      <button id="current-squad-button">Go to Squad</button>
+    </div>
+
+    <div class="search">
+      
+	<input type="text" placeholder="Search.." name="search" id="bar">
+	<button type="submit" id="search-button">Find</button>	
+      
+      
+    </div>
+      
+
+    <div id="data">
+    </div>
+
+    <div id="nav-buttons">
+      <button class="page-button" id="prev">< Prev </button>
+      <button class="page-button" id="next">Next ></button>
+    </div>
+
+    <script src="main.js"></script>
+
   </body>
+
 </html>
