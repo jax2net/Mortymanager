@@ -1,0 +1,10 @@
+/* CSS file for all *.html files */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    background-color: #546A7B;
+    color: #FFFBFE;
+}
