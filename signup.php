@@ -22,11 +22,24 @@
 
 
     <?php 
-     $dbServerName = "localhost";
-     $dbUsername = "root";
-     $dbPassword = "Weinersaregr8!";
-
-     $conn = mysqli($dbServerName, $dbUsername, $dbPassword);
+     
+     $servername = getenv('IP');
+     $username = "root";
+     $password = "asdf123";
+     $database = "Mortymanager";
+     $dbport = 3306;
+     $db = new mysqli($servername, $username, $password, $database, $dbport);
+     
+     if ($db->connect_error) {
+       die("Connection failed: " . $db->connect_error);
+     }
+     echo "Connected successfully (" . $db->host_info . ")";
+     
+     $query = "select * from users";
+     $result = mysqli_query($db, $query);
+     while ($row = mysqli_fetch_assoc($result)) {
+       echo "The ID is: " . $row['id'] . " and username is: " . $row['username'];
+     }
 
 
 
