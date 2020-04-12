@@ -6,6 +6,10 @@
     position: relative;
 }
 
+.search {
+    text-align: center;
+}
+
 #search-button {
     background-color: #91b571;
     color: #FFFBFE;
@@ -14,7 +18,8 @@
     font-weight: bold;
 }
 
-.search-bar {
+#bar {
+    padding: 7px;
     text-align: center;
     position: relative;
 }

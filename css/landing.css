@@ -1,4 +1,109 @@
+html {
+
+}
+
+body {
+    margin-top: 5%;
+}
+
+
+
+.button-container {
+    text-align: center;
+}
+
 .login-buttons {
+    font-size: 18px;
     text-align: center;
     align-items: center;
+    padding: 8px;
+    border-radius: 2px;
+}
+
+#login-button {
+    margin-right: 20px;
+    background-color: transparent;
+    color: #FDFDFF;
+    border: solid 2px #FDFDFF;
+    border-radius: 2px;
+}
+
+#signup-button {
+    margin-left: 20px;
+    padding: 10px;
+    border: none;
+    background-color: #62929E;
+    color: #FDFDFF;
+    border: solid 2px :#62929E;
+    border-radius: 2px;
+}
+html {
+    margin: 0 0 0 0;
+    background: rgba(84, 103, 171, 0.3) url('https://www.ecopetit.cat/wpic/mpic/1-12916_zombies-rick-and-morty.jpg') no-repeat;
+    
+    height: 100px;
+    width: 100%;
+}
+
+
+
+.button-container {
+    text-align: center;
+}
+
+.login-buttons {
+    font-size: 18px;
+    text-align: center;
+    align-items: center;
+    padding: 8px;
+    border-radius: 2px;
+}
+
+#login-button {
+    margin-right: 20px;
+    background-color: transparent;
+    color: #FDFDFF;
+    border: solid 2px #FDFDFF;
+    border-radius: 2px;
+}
+
+#signup-button {
+    margin-left: 20px;
+    padding: 10px;
+    border: none;
+    background-color: #62929E;
+    color: #FDFDFF;
+    border: solid 2px :#62929E;
+    border-radius: 2px;
+}
+
+
+.button-container {
+    text-align: center;
+}
+
+.login-buttons {
+    font-size: 18px;
+    text-align: center;
+    align-items: center;
+    padding: 8px;
+    border-radius: 2px;
+}
+
+#login-button {
+    margin-right: 20px;
+    background-color: transparent;
+    color: #FDFDFF;
+    border: solid 2px #FDFDFF;
+    border-radius: 2px;
+}
+
+#signup-button {
+    margin-left: 20px;
+    padding: 10px;
+    border: none;
+    background-color: #62929E;
+    color: #FDFDFF;
+    border: solid 2px :#62929E;
+    border-radius: 2px;
 }

@@ -21,6 +21,7 @@ const getData = () => {
 	     (response) => {
 		if (response.status !== 200) {
 		    console.log('Theres a problem : ' + response.status);
+		    page.innerHTML = 'No results found...'
 		    return;
 		}
 		// look at response
