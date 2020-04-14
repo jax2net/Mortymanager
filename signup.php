@@ -1,50 +1,34 @@
-<!-- SIGN UP PAGE -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Sign Up - Mortymanager</title>
-    <link href="css/global.css" rel="stylesheet">
-    <link href="css/signup.css" rel="stylesheet">
-  </head>
-  <body>
-    <div class="container">
-      <div style="text-align: center; font-size: 50px">
-	Create an account
-      </div>
-      <label for="username">Username:</label>
-      <input type="text" name="username" required></br>
-      <label for="email">Email: </label>
-      <input type="text" name="email" required></br>
-      <label for="password">Password</label>
-      <input type="text" name="password" required></br>
-      <button type="submit">Sign up</button>
-    </div>
-
 
     <?php 
      
-     $servername = getenv('IP');
-     $username = "root";
-     $password = "asdf123";
-     $database = "Mortymanager";
-     $dbport = 3306;
-     $db = new mysqli($servername, $username, $password, $database, $dbport);
+     $db = new mysqli(getenv('IP'), "root", "asdf123", "Mortymanager", 3306);
      
      if ($db->connect_error) {
-       die("Connection failed: " . $db->connect_error);
-     }
-     echo "Connected successfully (" . $db->host_info . ")";
+        die("Connection failed: " . $conn->connect_error);
+    }
      
-     $query = "select * from users";
-     $result = mysqli_query($db, $query);
-     while ($row = mysqli_fetch_assoc($result)) {
-       echo "The ID is: " . $row['id'] . " and username is: " . $row['username'];
+     
+     mysql_select_db("Mortymanager");
+     
+     if (!mysqli_select_db($db, 'Mortymanager')) {
+         echo "database not selected </br>";
      }
-
+    
+     $username = $_POST['username'];
+     $password = $_POST['password'];
+     $hash = password_hash($password, PASSWORD_DEFAULT);
+     
+     
+     $sql = "INSERT INTO users VALUES (null, '$username', '$hash')";
+     
+     
+     if (!mysqli_query($db, $sql)) {
+         echo 'Not inserted ';
+     } else {
+         header("Location: main.html");
+     }
 
 
 
 
      ?>
-  </body>
-</html>
