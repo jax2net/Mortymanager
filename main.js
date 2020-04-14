@@ -3,7 +3,7 @@
 // The JS file where calls to handle API calls / DOM manipulation
 
 
-let url = 'https://rickandmortyapi.com/api/character/'; // url for characters
+let url = 'https://rickandmortyapi.com/api/character'; // url for characters
 let data; // holds the JSON Object
 const page = document.getElementById('data'); // reference to the div with id data
 const nextButton = document.getElementById('next');
@@ -27,7 +27,7 @@ const getData = () => {
 		// look at response
 		response.json().then((json) => {
 		    data = json;
-		    displayData(data);
+		    displayAll(data);
 		    nextPageURL = data.info.next; // saving data to get next page
 		    prevPageURL = data.info.prev; // holds previous page url
 		    console.log('Obtained data and displaying to page!');
@@ -42,7 +42,7 @@ const getData = () => {
 
 
 
-const displayData = () => {
+const displayAll = () => {
     
     for (let i = 0; i < data.results.length; i++) {
 	const container = document.createElement('div');
@@ -54,7 +54,7 @@ const displayData = () => {
 	const origin = document.createElement('p');
 	const location = document.createElement('h5');
 	const img = document.createElement('img');
-	const addButton = document.createElement('button');
+	const expandButton = document.createElement('button');
 
 
 	
@@ -62,6 +62,11 @@ const displayData = () => {
 	name.textContent = data.results[i].name;
 	species.textContent = speciesText + data.results[i].species;
 	origin.textContent = originText + data.results[i].origin.name;
+
+	
+	let status = data.results[i].status;
+	let gender = data.results[i].gender;
+	let locationData = data.results[i].location.name;
 
 	
 	// style card elements //
@@ -75,7 +80,8 @@ const displayData = () => {
 	section.style.backgroundColor = '#62929E'
 	img.style.height = '200px';
 	img.style.width = '200px';
-	img.src = data.results[i].image;
+	let imgURL = data.results[i].image;
+	img.src = imgURL;
 	img.marginLeft = 'auto';
 	img.marginRight = 'auto';
 
@@ -86,18 +92,21 @@ const displayData = () => {
 	    section.style.boxShadow = '0 4px 8px 0 rgba(0,0,0,0.2)';
 	    section.style.transition = '0.3s';
 	}
+	expandButton.onclick = () => {
+	    generateCharacterPage(name.textContent, species.textContent, origin.textContent, status, gender, locationData, imgURL);
+	}
 	
 	// end of styling // 
 
 
 	// style button //
-	addButton.textContent = 'Add';
-	addButton.style.fontSize = '15px';
-	addButton.style.color = '#FDFDFF';
-	addButton.style.backgroundColor = '#393D3F';
-	addButton.style.border = 'none';
-	addButton.style.padding = '5px 10px';
-	addButton.style.cursor = 'pointer';
+	expandButton.textContent = 'More info';
+	expandButton.style.fontSize = '15px';
+	expandButton.style.color = '#FDFDFF';
+	expandButton.style.backgroundColor = '#393D3F';
+	expandButton.style.border = 'none';
+	expandButton.style.padding = '5px 10px';
+	expandButton.style.cursor = 'pointer';
 
 	
 	// end of button styling //
@@ -107,7 +116,7 @@ const displayData = () => {
 	section.appendChild(origin);
 	section.appendChild(img);
 	section.appendChild(document.createElement("br"));
-	section.appendChild(addButton);
+	section.appendChild(expandButton);
 
 	
 	
@@ -115,9 +124,7 @@ const displayData = () => {
 	page.appendChild(container);
 
 
-	addButton.onclick = function() {
-	    console.log('added ' + name.textContent);
-	}
+	
     }
 }
 
@@ -136,10 +143,11 @@ prevButton.onclick = function() {
     getData(this);
     return false;
 }
-
+/* to be implemented soon
 squadButton.onclick = function() {
     console.log('clicked Squad Button');
 }
+*/
 
 searchButton.onclick = function() {
     console.log('searching for ' + searchBar.value);
@@ -147,4 +155,42 @@ searchButton.onclick = function() {
     url += '?name=' + searchBar.value;
     page.innerHTML = "";
     getData(this);
+}
+
+function generateCharacterPage(name, species, origin, status, gender, locationData, imgURL) {
+    page.innerHTML = '';
+    console.log(name);
+    console.log(species);
+    console.log(origin);
+    console.log(status);
+    console.log(gender);
+    console.log(locationData);
+    console.log(imgURL);
+    console.log('hi');
+    
+    const nameText = document.createElement('h2');
+    const speciesText = document.createElement('p');
+    const originText = document.createElement('p');
+    const statusText = document.createElement('p');
+    const genderText = document.createElement('p');
+    const locationText = document.createElement('p');
+    const section = document.createElement('div');
+    const img = document.createElement('img');
+    
+    nameText.textContent = name;
+    speciesText.textContent = species;
+    originText.textContent = origin;
+    statusText.textContent = "Status: " + status;
+    genderText.textContent = "Gender: " + gender;
+    locationText.textContent = "Location: " + locationData;
+    img.src = imgURL;
+
+    section.appendChild(nameText);
+    section.appendChild(speciesText);
+    section.appendChild(statusText);
+    section.appendChild(originText);
+    section.appendChild(locationText);
+    section.appendChild(genderText);
+    section.appendChild(img); 
+    page.appendChild(section);
 }
