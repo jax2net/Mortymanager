@@ -1,4 +1,3 @@
-
     <?php 
      
      $db = new mysqli(getenv('IP'), "root", "asdf123", "Mortymanager", 3306);
@@ -20,15 +19,13 @@
      
      
      $sql = "INSERT INTO users VALUES (null, '$username', '$hash')";
+    
      
      
      if (!mysqli_query($db, $sql)) {
-         echo 'Not inserted ';
+         echo 'That username is taken already. ';
      } else {
          header("Location: main.html");
      }
-
-
-
 
      ?>

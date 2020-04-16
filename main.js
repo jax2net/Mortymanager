@@ -43,6 +43,8 @@ const getData = () => {
 
 
 const displayAll = () => {
+	
+	page.innerHTML = "";
     
     for (let i = 0; i < data.results.length; i++) {
 	const container = document.createElement('div');
@@ -159,14 +161,6 @@ searchButton.onclick = function() {
 
 function generateCharacterPage(name, species, origin, status, gender, locationData, imgURL) {
     page.innerHTML = '';
-    console.log(name);
-    console.log(species);
-    console.log(origin);
-    console.log(status);
-    console.log(gender);
-    console.log(locationData);
-    console.log(imgURL);
-    console.log('hi');
     
     const nameText = document.createElement('h2');
     const speciesText = document.createElement('p');
@@ -176,6 +170,18 @@ function generateCharacterPage(name, species, origin, status, gender, locationDa
     const locationText = document.createElement('p');
     const section = document.createElement('div');
     const img = document.createElement('img');
+    const back = document.createElement('button');
+    
+    
+    back.textContent = 'Back';
+	back.style.fontSize = '15px';
+	back.style.color = '#FDFDFF';
+	back.style.backgroundColor = '#393D3F';
+	back.style.border = 'none';
+	back.style.padding = '5px 10px';
+	back.style.cursor = 'pointer';
+    
+    
     
     nameText.textContent = name;
     speciesText.textContent = species;
@@ -192,5 +198,11 @@ function generateCharacterPage(name, species, origin, status, gender, locationDa
     section.appendChild(locationText);
     section.appendChild(genderText);
     section.appendChild(img); 
+    section.appendChild(document.createElement("br"));
+    section.appendChild(back);
     page.appendChild(section);
+    
+    back.onclick = function() {
+		getData();
+    }
 }
